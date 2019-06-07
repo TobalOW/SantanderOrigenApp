@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { ScrollView, Text, View, StyleSheet, Dimensions, Alert } from 'react-native';
-import { Avatar, Button, Divider } from 'react-native-elements';
+import { Avatar, Divider } from 'react-native-elements';
 import Constants from 'expo-constants';
 
 const window = Dimensions.get('window');

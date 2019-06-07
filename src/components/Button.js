@@ -45,7 +45,7 @@ class Button extends Component {
             {children}
           </LinearGradient>
         </TouchableOpacity>
-      )
+      );
     }
 
     return (
@@ -56,7 +56,7 @@ class Button extends Component {
       >
         {children}
       </TouchableOpacity>
-    )
+    );
   }
 }
 
@@ -68,7 +68,7 @@ Button.defaultProps = {
   locations: [0.1, 0.9],
   opacity: 0.8,
   color: theme.colors.white,
-}
+};
 
 export default Button;
 
