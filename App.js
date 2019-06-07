@@ -1,19 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as Font from 'expo-font';
+import { View } from 'react-native';
+import { MainNavigator } from './src/navigator';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+console.disableYellowBox = true;
+
+export default class App extends React.Component {
+  async componentDidMount() {
+    await Font.loadAsync({
+      'open-sans': require('./src/assets/OpenSans-Regular.ttf'),
+    });
+  }
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <MainNavigator />
+      </View>
+      );
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
