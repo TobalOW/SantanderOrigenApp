@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, TextInput } from 'react-native'
-import { Icon } from 'expo';
+import * as Icon from '@expo/vector-icons'
 
 import Text from './Text';
 import Block from './Block';
