@@ -5,12 +5,12 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   ActivityIndicator,
-  Keyboard,
-  Image
+  AsyncStorage
 } from 'react-native';
 
 import { Button, Input, Block, Text } from '../components';
 import { theme } from '../constants';
+import { services } from '../services';
 
 export default class AuthScreen extends Component {
   static navigationOptions = {
@@ -18,25 +18,49 @@ export default class AuthScreen extends Component {
   };
 
   state = {
-    email: 'VALID_EMAIL',
-    password: 'VALID_P',
+    email: 'Mizgier@SantanderFamilia.cl',
+    password: 'marga123',
     errors: [],
     loading: false,
   }
 
   handleLogin() {
+    // EL LOGIN DE LA APLICACION ESTA HARDCODEADO
+    // RUT: '192093227', PASSWORD: '123123'
     const { navigation } = this.props;
-    navigation.navigate('childApp');
+    this.setState({
+      loading: true,
+      errors: []
+    });
+    services.loginAccount({ rut: '192093227', password: '123123' })
+      .then(async(res) => {
+        if (res.data.status === 'success') {
+          await AsyncStorage.setItem('@localStorage:token', res.data.token);
+          this.setState({
+            loading: false
+          });
+          navigation.navigate('parentApp');
+        } else {
+          this.setState({
+            loading: false,
+            errors: ['password']
+          });
+        }
+      });
   }
   render() {
     const { navigation } = this.props;
     const { loading, errors } = this.state;
+
+    // Comprobacion de algun error en el login
     const hasErrors = key => errors.includes(key) ? styles.hasErrors : null;
 
     return (
       <KeyboardAvoidingView style={styles.login} behavior="padding">
         <Block padding={[0, theme.sizes.base * 2]}>
-          <Text h1 bold>Login</Text>
+          <Block center middle flex={false} margin={[40, 0]}>
+            <Text h1 bold>Santander Familia</Text>
+          </Block>
           <Block middle>
             <Input
               label="Email"
@@ -56,13 +80,13 @@ export default class AuthScreen extends Component {
           <Button gradient startColor='#cd2324' endColor='#ff6661' onPress={() => this.handleLogin()}>
               {loading ?
                 <ActivityIndicator size="small" color="white" /> :
-                <Text bold white center>Login</Text>
+                <Text bold white center>Ingresar</Text>
               }
             </Button>
 
             <Button onPress={() => navigation.navigate('Forgot')}>
               <Text gray caption center style={{ textDecorationLine: 'underline' }}>
-                Forgot your password?
+                Olvidaste Contraseña?
               </Text>
             </Button>
           </Block>

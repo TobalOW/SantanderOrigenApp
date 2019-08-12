@@ -38,8 +38,12 @@ export default class Typography extends Component {
       white,
       gray,
       gray2,
+      gray3,
       style,
       children,
+      ultraBold,
+      darkGray,
+      green,
       ...props
     } = this.props;
 
@@ -61,6 +65,7 @@ export default class Typography extends Component {
       regular && styles.regular,
       bold && styles.bold,
       semibold && styles.semibold,
+      ultraBold && styles.ultraBold,
       medium && styles.medium,
       light && styles.light,
       center && styles.center,
@@ -76,6 +81,9 @@ export default class Typography extends Component {
       white && styles.white,
       gray && styles.gray,
       gray2 && styles.gray2,
+      gray3 && styles.gray3,
+      darkGray && styles.darkGray,
+      green && styles.green,
       style // rewrite predefined styles
     ];
 
@@ -91,11 +99,14 @@ const styles = StyleSheet.create({
   // default style
   text: {
     fontSize: theme.sizes.font,
-    color: theme.colors.black
+    color: theme.colors.black,
   },
   // variations
   regular: {
     fontWeight: 'normal',
+  },
+  ultraBold: {
+    fontWeight: '900'
   },
   bold: {
     fontWeight: 'bold',
@@ -121,6 +132,9 @@ const styles = StyleSheet.create({
   white: { color: theme.colors.white },
   gray: { color: theme.colors.gray },
   gray2: { color: theme.colors.gray2 },
+  gray3: { color: theme.colors.gray3 },
+  darkGray: { color: theme.colors.darkGray },
+  green: { color: theme.colors.green },
   // fonts
   h1: theme.fonts.h1,
   h2: theme.fonts.h2,

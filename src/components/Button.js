@@ -17,6 +17,7 @@ class Button extends Component {
       locations,
       shadow,
       children,
+      bigShadow,
       ...props
     } = this.props;
 
@@ -25,6 +26,8 @@ class Button extends Component {
       shadow && styles.shadow,
       color && styles[color], // predefined styles colors for backgroundColor
       color && !styles[color] && { backgroundColor: color }, // custom backgroundColor
+      bigShadow && styles.bigShadow,
+
       style,
     ];
 
@@ -84,6 +87,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
+  },
+  bigShadow: {
+    shadowColor: theme.colors.black,
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 2,
   },
   accent: { backgroundColor: theme.colors.accent, },
   primary: { backgroundColor: theme.colors.primary, },

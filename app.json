@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Santander Origen",
-    "slug": "santander-origen",
+    "name": "Origen",
+    "slug": "origen",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [
@@ -24,7 +24,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.quasarchile.spa"
+
+    },
+    "ios": {
+    },
+    "android": {
+      "package": "com.quasarchile.spa"
     }
   }
 }

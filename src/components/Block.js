@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Animated } from 'react-native'
+import { StyleSheet, View, Animated, TouchableOpacity } from 'react-native'
 
 import { theme } from '../constants';
 
@@ -117,6 +117,9 @@ export default class Block extends Component {
       wrap,
       style,
       children,
+      bigShadow,
+      pressable,
+      onPress,
       ...props
     } = this.props;
 
@@ -136,6 +139,7 @@ export default class Block extends Component {
       padding && { ...this.handlePaddings() },
       card && styles.card,
       shadow && styles.shadow,
+      bigShadow && styles.bigShadow,
       space && { justifyContent: `space-${space}` },
       wrap && { flexWrap: 'wrap' },
       color && styles[color], // predefined styles colors for backgroundColor
@@ -148,16 +152,28 @@ export default class Block extends Component {
         <Animated.View style={blockStyles} {...props}>
           {children}
         </Animated.View>
-      )
+      );
+    }
+
+    if (pressable) {
+      return (
+        <TouchableOpacity onPress={onPress} style={blockStyles} {...props}>
+          {children}
+        </TouchableOpacity>
+      );
     }
 
     return (
       <View style={blockStyles} {...props}>
         {children}
       </View>
-    )
+    );
   }
 }
+
+Block.defaultProps = {
+  animated: false,
+};
 
 export const styles = StyleSheet.create({
   block: {
@@ -195,6 +211,13 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 13,
+    elevation: 2,
+  },
+  bigShadow: {
+    shadowColor: theme.colors.black,
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     elevation: 2,
   },
   accent: { backgroundColor: theme.colors.accent, },

@@ -6,24 +6,25 @@ import { theme } from '../constants';
 
 export default class Card extends Component {
   render() {
-    const { color, style, children, ...props } = this.props;
+    const { color, style, children, pressable, onPress, padding, height, ...props } = this.props;
     const cardStyles = [
       styles.card,
+      height && { height },
       style,
     ];
-
     return (
-      <Block color={color || theme.colors.white} style={cardStyles} {...props}>
+      <Block padding={padding} pressable={pressable} onPress={onPress} color={color || theme.colors.white} style={cardStyles} {...props}>
         {children}
       </Block>
-    )
+    );
   }
 }
 
 export const styles = StyleSheet.create({
+  //default styles
   card: {
-    borderRadius: theme.sizes.radius,
-    padding: theme.sizes.base + 4,
+    borderRadius: theme.sizes.radius / 2,
     marginBottom: theme.sizes.base,
+    height: theme.window.height * 0.18,
   },
-})
+});
