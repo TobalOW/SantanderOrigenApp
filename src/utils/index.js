@@ -13,18 +13,13 @@ export function objExpenses(obj) {
   let data = [];
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
-        // "Retiros"
-        // "Multitienda"
-        // "Carrete"
-        // "Comida"
-        // "Transporte"
-        // "Entretenimiento"
-        // "Otros"
       let color = '#ff0000';
-      if (key === 'Otros' || key === 'Carrete' || key === 'Retiros') {
+      if (key === 'Otros' || key === 'Carrete') {
         color = '#3366ff';
       } else if (key === 'Multitienda') {
         color = '#FFCC33';
+      } else if (key === 'Retiros') {
+        color = '#9F3668';
       } else if (key === 'Comida') {
         color = '#63ba68';
       } else if (key === 'Entretenimiento') {
