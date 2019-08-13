@@ -23,7 +23,7 @@ export default class NewContactScreen extends Component {
     token: '',
     rut: '',
     bank: '',
-    typeId: 3,
+    typeId: 1,
     number: '',
     loading: false
   }
