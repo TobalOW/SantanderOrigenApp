@@ -1,12 +1,18 @@
+import { Platform } from 'react-native';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 
 export function toClp(number) {
-  const formatter = new Intl.NumberFormat('es-CL', {
-    style: 'currency',
-    currency: 'CLP',
-    minimumFractionDigits: 0
-  });
-
-  return formatter.format(number);
+  // if (Platform.OS === 'ios') {
+    const formatter = new Intl.NumberFormat('es-CL', {
+      style: 'currency',
+      currency: Platform.OS === 'ios' ? 'CLP' : 'USD',
+      minimumFractionDigits: 0,
+      currencyDisplay: 'symbol'
+    });
+    return formatter.format(number);
+  // }
+  // return `$${number}`;
 }
 
 export function objExpenses(obj) {
