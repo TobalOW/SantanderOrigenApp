@@ -16,6 +16,7 @@
     "expo-constants": "^5.0.1",
     "expo-font": "^5.0.1",
     "expo-linear-gradient": "^5.0.1",
+    "intl": "^1.2.5",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "react": "16.8.3",
