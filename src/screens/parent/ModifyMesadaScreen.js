@@ -45,7 +45,7 @@ export default class ModifyMesadaScreen extends Component {
               />
           </Block>
           <Block column center middle>
-            <Text center darkGray>Nuevo monto de mesada</Text>
+            <Text center darkGray>Nuevo día de mesada</Text>
               <Input
                 placeholder='00'
                 containerStyle={{ width: 200, margin: 10 }}
