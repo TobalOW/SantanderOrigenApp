@@ -27,6 +27,7 @@ export default class MovementsDetailScreen extends Component {
     this.setState({
       child: this.props.navigation.state.params
     });
+
     // Obtener token y guardarlo en variable del componente
     const token = await AsyncStorage.getItem('@localStorage:token');
     services.getDetailsChild(this.state.child.id, token)
@@ -82,7 +83,7 @@ export default class MovementsDetailScreen extends Component {
             </Block>
             <Block flex={false} style={{ marginLeft: 15, marginTop: 3 }}>
               <Text h2 bold black>Detalle de Movimientos</Text>
-              <Text h2 bold black>Cristóbal</Text>
+              <Text h2 bold black>{this.props.navigation.state.params.first_name}</Text>
             </Block>
           </Block>
         </Navbar>
